@@ -17,3 +17,4 @@ use App\Http\Controllers\AuthController;
 */
 Route::get('/',[AuthController::class, 'register'])->name('index.register');
 Route::get('/regalos',[GiftsController::class,'index'])->name('index.regalos');
+Route::post('/auth/registrar',[AuthController::class,'saveUser'])->name('auth.register');

@@ -10,6 +10,7 @@ class Regalos extends Model
     use HasFactory;
     protected $table = 'regalos';
     protected $primaryKey = 'rega_codigo';
+    public $timestamps = false;
     protected $fillable = [
         'rega_codigo',
         'rega_nombre',
