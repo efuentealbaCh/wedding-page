@@ -15,7 +15,10 @@ use App\Http\Controllers\AuthController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('/auth/registrar',[AuthController::class,'saveUser'])->name('auth.register');
 Route::get('/',[AuthController::class,'login'])->name('index.login.view');
+Route::post('/', [AuthController::class, 'validarIngreso'])->name('auth.ingresar');
+
+
 Route::get('/registrar',[AuthController::class, 'register'])->name('index.register');
 Route::get('/regalos',[GiftsController::class,'index'])->name('index.regalos');
-Route::post('/auth/registrar',[AuthController::class,'saveUser'])->name('auth.register');

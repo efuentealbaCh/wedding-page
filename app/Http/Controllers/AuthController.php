@@ -13,6 +13,35 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+    public function validarIngreso(Request $request) {
+        $request->validate(
+            [
+                'username' => 'required',
+                'contrasena' => 'required',
+            ],
+            [
+                'username.required' => 'El nombre de usuario es requerido.',
+                'contrasena.required' => 'La contraseña es requerida.',
+            ]
+        );
+
+        $usuario = Usuarios::where(['usua_nombre_usuario' => $request->username])->first();
+
+        if ($usuario == NULL) return redirect()->back()->with('errorName', 'El usuario no se encuentra registrado.')->withInput();
+
+        $validarClave = Hash::check($request->contrasena, $usuario->usua_contrasena);
+
+        if (!$validarClave) return redirect()->back()->with('errorClave', 'La contraseña es incorrecta.')->withInput();
+
+        if ($usuario->usua_rol == 'admin') {
+            $request->session()->put('admin', $usuario);
+            return redirect()->route('index.regalos');
+        } elseif ($usuario->usua_rol == 'invitado') {
+            $request->session()->put('invitado', $usuario);
+            return redirect()->route('index.regalos');
+        }
+    }
+
     public function register()
     {
         return view('auth.register');

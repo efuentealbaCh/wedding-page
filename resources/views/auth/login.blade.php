@@ -8,7 +8,9 @@
                         <h4>Ingresar</h4>
                     </div>
                     <div class="card-body">
-                        <form action="#" method="POST" >
+                        <form action="{{route('auth.ingresar')}}" method="POST" >
+                            @method('post')
+                            @csrf
                             <div class="form-group">
                                 <label for="username">Nombre de usuario</label>
                                 <input type="text" id="username" class="form-control" name="username" autofocus tabindex="1">
