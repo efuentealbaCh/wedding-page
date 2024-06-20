@@ -22,5 +22,6 @@
 <script src="{{ asset('js/scripts.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 <script src="{{ asset('js/utils/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ asset('js/utils/sweetalert/sweetalert.min.js') }}"></script>
 
 </html>

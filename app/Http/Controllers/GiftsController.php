@@ -7,8 +7,12 @@ use App\Models\Regalos;
 
 class GiftsController extends Controller
 {
-    function index() {
+    public function index() {
         $regalos = Regalos::all();
         return view('gifts.gift',compact('regalos'));
+    }
+
+    public function confirmarAsistencia(){
+        return view('gifts.asistencia');
     }
 }
