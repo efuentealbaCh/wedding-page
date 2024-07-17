@@ -8,7 +8,7 @@
                         <h4>Registar invitado</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('auth.register') }}" method="POST">
+                        <form action="{{ route('auth.register') }}" method="POST" id="register-form">
                             @csrf
                             @method('POST')
                             <div class="row">
@@ -37,11 +37,14 @@
                                     <input id="vale" type="number" class="form-control" name="vale">
                                 </div>
                             </div>
-                            <button class="btn btn-primary mr-1" type="submit"">Registrar</button>
+                            <div class="text-center">
+                                <button class="btn btn-primary mr-1" type="submit""> <i class="fas fa-save"></i> Registrar</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/auth/register.js') }}"></script>
 @endsection

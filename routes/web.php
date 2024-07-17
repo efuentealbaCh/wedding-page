@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\GiftsController;
-use App\Http\Controllers\LandingController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\GiftsController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +15,13 @@ use App\Http\Controllers\AuthController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::post('/auth/registrar',[AuthController::class,'saveUser'])->name('auth.register');
+
 Route::get('/',[AuthController::class,'login'])->name('index.login.view');
-Route::post('/', [AuthController::class, 'validarIngreso'])->name('auth.ingresar');
-
-
 Route::get('/registrar',[AuthController::class, 'register'])->name('index.register');
+Route::post('/auth/login', [AuthController::class, 'loginValidate'])->name('auth.ingresar');
+Route::post('/auth/registrar',[AuthController::class,'saveUser'])->name('auth.register');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/admin/users',[AdminController::class,'listUsers'])->name('admin.list.users');
 Route::get('/regalos',[GiftsController::class,'index'])->name('index.regalos');
-Route::get('/asistencia',[GiftsController::class,'confirmarAsistencia']);
+Route::post('/regalos/reservar',[GiftsController::class,'reservar']);

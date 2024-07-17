@@ -8,7 +8,7 @@
                         <h4>Ingresar</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{route('auth.ingresar')}}" method="POST" >
+                        <form action="{{route('auth.ingresar')}}" method="POST" id="login-form">
                             @method('post')
                             @csrf
                             <div class="form-group">
@@ -30,3 +30,4 @@
         </div>
     </div>
 @endsection
+
