@@ -6,13 +6,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/components.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
+    <link rel="stylesheet" href="{{ asset('css/clock.css') }}">
     <title>Regalos E y K</title>
 </head>
 
@@ -82,10 +83,12 @@
                             <!-- Botón de Logout -->
                             <li class="menu-header">Cuenta</li>
                             <li>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
                                     @csrf
                                 </form>
-                                <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <a href="#" class="nav-link"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     <i data-feather="log-out"></i> <span>Cerrar Sesión</span>
                                 </a>
                             </li>

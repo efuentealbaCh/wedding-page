@@ -25,3 +25,4 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/admin/users',[AdminController::class,'listUsers'])->name('admin.list.users');
 Route::get('/regalos',[GiftsController::class,'index'])->name('index.regalos');
 Route::post('/regalos/reservar',[GiftsController::class,'reservar']);
+Route::post('/asistencia/confirmar',[GiftsController::class,'confirmarAsistencia']);
