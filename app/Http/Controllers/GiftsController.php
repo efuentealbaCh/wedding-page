@@ -10,7 +10,7 @@ class GiftsController extends Controller
 {
     public function index()
     {
-        $regalos = Regalos::all();
+        $regalos = Regalos::orderBy('rega_nombre','asc')->get();
         return view('gifts.gift', compact('regalos'));
     }
 
