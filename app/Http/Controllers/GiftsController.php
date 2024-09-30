@@ -19,7 +19,7 @@ class GiftsController extends Controller
         $usuario = $request->usuario;
         $regalo = $request->regalo;
         $estado = $request->estado;
-        $userAvaible = Regalos::where('usua_codigo', $usuario)->first();
+        $userAvaible = Regalos::select('rega_codigo')->where('usua_codigo', $usuario)->count();
         $giftAvaible = Regalos::where(['rega_estado' => '1', 'rega_codigo' => $regalo])
             ->first();
         $userState = Usuarios::where('usua_codigo', $usuario)->first();
@@ -34,7 +34,7 @@ class GiftsController extends Controller
                 'status' => 1,
                 'msg' => 'El Regalo seleccionado ya se encuentra reservado.'
             ]);
-        } else if ($userAvaible != null) {
+        } else if ($userAvaible > 0) {
             return response()->json([
                 'status' => 1,
                 'msg' => 'El usuario ya tiene una reserva de regalo, para cancelar reserva contactar al +569 21653786'
@@ -54,6 +54,7 @@ class GiftsController extends Controller
 
         if ($actualizado) {
             session()->put('invitado.usua_asistencia', $asistencia);
+            session()->put('invitado.usua_codigo', $usuario);
             session()->save();
             return response()->json(['status' => 1, 'msg' => 'Tu estado de asistencia fue actualizado']);
         } else {

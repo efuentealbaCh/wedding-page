@@ -41,11 +41,12 @@
                                     elebrar juntos en el futuro. ¡Gracias por hacer nuestro día aún más especial con su
                                     amor!
                                 @endif
-                            </h5">
-                            <h5>
-                                Para saber la ubicación da <a href="#verMapa">click aquí</a> y llegarás a la sección de google maps con las indicaciones para
-                                llegar al lugar de nuestra boda.
-                            </h5>
+                                </h5">
+                                <h5>
+                                    Para saber la ubicación da <a href="#verMapa">click aquí</a> y llegarás a la sección de
+                                    google maps con las indicaciones para
+                                    llegar al lugar de nuestra boda.
+                                </h5>
                         </div>
                     </div>
                 </div>
@@ -113,9 +114,15 @@
                                                             <i class="fas fa-check"></i> Disponible
                                                         </div>
                                                     @else
-                                                        <div class="badge badge-danger badge-shadow">
-                                                            <i class="fas fa-times"></i> Reservado
-                                                        </div>
+                                                        @if ($regalo->usua_codigo == Session::get('invitado.usua_codigo'))
+                                                            <div class="badge badge-info badge-shadow">
+                                                                <i class="fas fa-check"></i> Este es tu regalo
+                                                            </div>
+                                                        @else
+                                                            <div class="badge badge-danger badge-shadow">
+                                                                <i class="fas fa-times"></i> Reservado
+                                                            </div>
+                                                        @endif
                                                     @endif
                                                 </p>
                                                 @if ($regalo->rega_estado == 1)
